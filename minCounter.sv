@@ -2,20 +2,20 @@ module minCounter (
     input logic clk,
     input logic rst,
     output logic [5:0] mins
+    output logic [5:0] secs
 );
-    logic [5:0] sec_Counter;
     always_ff @(posedge clk) begin 
         if (rst == 1)begin
             mins <= 0;
-            sec_Counter <= 0;
+            secs <= 0;
         end
         else begin
-            if (sec_Counter == 59) begin
-                sec_Counter <= 0;
+            if (secs == 59) begin
+                secs <= 0;
                 mins <= mins + 1;
             end
             else
-                sec_Counter <= sec_Counter + 1;
+                secs <= secs + 1;
         end
     end
 
