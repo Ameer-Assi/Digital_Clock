@@ -1,7 +1,7 @@
 module binaryToBCD (
     input logic [5:0] number,
     output logic [3:0] units,
-    output logic [3:0] tens,
+    output logic [3:0] tens
 );
 
 always_comb begin 

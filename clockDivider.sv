@@ -1,5 +1,5 @@
 module clockDivider #(
-    parameter DIVIDE_BY = 1
+    parameter DIVIDE_BY = 10
 ) (
     input logic clk,
     input logic rst,
