@@ -23,6 +23,13 @@ logic [3:0] units_hours;
 logic [3:0] tens_hours;
 logic [3:0] units_mins;
 logic [3:0] tens_mins;
+logic blink1,blink2,blink3;
+case (changeD)
+    00: blink1 = 1;
+    01: blink2 = 1;
+    10: blink3 = 1; 
+    default: blink1 = 0;
+endcase
 fsm control(.clk(clk), .rst(rst), .clock_set(clock_set), .increment(increment),
  .decrement(decrement), .increment_output(increment_output), .decrement_output(decrement_output), .clock_set_output(clock_set_output),
  .changeD(changeD)   
@@ -35,10 +42,10 @@ binaryToBCD conv_secs(.number(secs), .units(units_sec), .tens(tens_sec));
 binaryToBCD conv_mins(.number(mins), .units(units_mins), .tens(tens_mins));
 binaryToBCD conv_hours(.number({1'b0,hours}), .units(units_hours), .tens(tens_hours));
 
-clockDisplay disp_units_s(.num(units_sec),.pins(units_pins_s));
-clockDisplay disp_tens_s(.num(tens_sec),.pins(tens_pins_s));
-clockDisplay disp_units_m(.num(units_mins),.pins(units_pins_m));
-clockDisplay disp_tens_m(.num(tens_mins),.pins(tens_pins_m));
-clockDisplay disp_units_h(.num(units_hours),.pins(units_pins_h));
-clockDisplay disp_tens_h(.num(tens_hours),.pins(tens_pins_h));
+clockDisplay disp_units_s(.num(units_sec),.pins(units_pins_s), .tick(tick), .blink(blink1));
+clockDisplay disp_tens_s(.num(tens_sec),.pins(tens_pins_s), .tick(tick), .blink(blink1));
+clockDisplay disp_units_m(.num(units_mins),.pins(units_pins_m), .tick(tick), .blink(blink2));
+clockDisplay disp_tens_m(.num(tens_mins),.pins(tens_pins_m), .tick(tick), .blink(blink2));
+clockDisplay disp_units_h(.num(units_hours),.pins(units_pins_h), .tick(tick), .blink(blink3));
+clockDisplay disp_tens_h(.num(tens_hours),.pins(tens_pins_h), .tick(tick), .blink(blink3));
 endmodule
