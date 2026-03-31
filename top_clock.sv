@@ -24,12 +24,18 @@ logic [3:0] tens_hours;
 logic [3:0] units_mins;
 logic [3:0] tens_mins;
 logic blink1,blink2,blink3;
-case (changeD)
-    00: blink1 = 1;
-    01: blink2 = 1;
-    10: blink3 = 1; 
-    default: blink1 = 0;
-endcase
+
+always_comb begin
+    blink1 =0; 
+    blink2 = 0;
+    blink3 = 0;
+    case (changeD)
+        00: blink1 = 1;
+        01: blink2 = 1;
+        10: blink3 = 1; 
+        default: ;
+    endcase
+end
 fsm control(.clk(clk), .rst(rst), .clock_set(clock_set), .increment(increment),
  .decrement(decrement), .increment_output(increment_output), .decrement_output(decrement_output), .clock_set_output(clock_set_output),
  .changeD(changeD)   
