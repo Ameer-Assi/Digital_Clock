@@ -5,4 +5,4 @@ Features:
     clock_set: changes the clock into set up mode, where you can change the time, it starts to change seconds and after a press it changes minutes and after a press it changes hours.
 3. When in set up mode, the value that is subject to change is blinking.
 
-[View Full Screen Recording Here](https://github.com/Ameer-Assi/Digital_Clock/releases/tag/Show-case)
+[View how it works](https://github.com/Ameer-Assi/Digital_Clock/releases/tag/Show-case)
